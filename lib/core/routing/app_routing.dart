@@ -7,17 +7,17 @@ import '../constants/app_font_size.dart';
 
 
 class RouteGenerator {
-  static const kSplash = "/";
-  static const kStartScreen = "/StartScreen";
+  static const kSplash = "/StartScreen";
+  static const kSignUpScreen = "/SignUpScreen";
 
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case kSplash:
-        return MaterialPageRoute(builder: (_) => const SplashScreen());
-      case kStartScreen:
         return MaterialPageRoute(builder: (_) => const StartScreen());
+        case kSignUpScreen:
+        return MaterialPageRoute(builder: (_) => const SignUpScreen());
 
       default:
         return _errorRoute(errorMessage: "Route not found: ${settings.name}");

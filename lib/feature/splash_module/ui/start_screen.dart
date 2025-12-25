@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/feature/splash_module/ui/CreateAccount.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -44,10 +43,9 @@ class _StartScreenState extends State<StartScreen> {
             Text(
               "Shoppe",
               style: TextStyle(
-                fontFamily: 'Raleway',
                 color: Color(0xFF202020),
                 fontSize: 52,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w900,
               ),
             ),
             SizedBox(height: 12),
@@ -73,11 +71,7 @@ class _StartScreenState extends State<StartScreen> {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CreateAccount()),
-                  );
+                  Navigator.pushNamed(context, "/SignUpScreen");
                 },
                 child: Text(
                   "Let's get started",

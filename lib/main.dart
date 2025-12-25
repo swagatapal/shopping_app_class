@@ -13,6 +13,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Shopping App',
+      theme: ThemeData(
+        fontFamily: "Raleway"
+      ),
       navigatorKey: RouteGenerator.navigatorKey,
       initialRoute: RouteGenerator.kSplash,
       onGenerateRoute: RouteGenerator.generateRoute,

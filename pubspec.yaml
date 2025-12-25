@@ -78,7 +78,7 @@ flutter:
        fonts:
          - asset: asset/fonts/Raleway-Italic-VariableFont_wght.ttf
          - asset: asset/fonts/Raleway-VariableFont_wght.ttf
-  #         style: italic
+
      - family: NunitoSans
        fonts:
          - asset: asset/fonts/NunitoSans-Italic-VariableFont_YTLC,opsz,wdth,wght.ttf
