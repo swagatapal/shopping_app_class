@@ -8,170 +8,196 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+
+  // controls password visibility
+  bool _isPasswordHidden = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: createAccountWidget(context),
-    );
-  }
+      backgroundColor: Colors.white,
 
-  Widget createAccountWidget(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 30),
-        
-              /// Title
-              const Text(
-                "Create\nAccount",
-                style: TextStyle(
-                  fontFamily: 'Raleway',
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF202020),
-                ),
-              ),
-        
-              const SizedBox(height: 30),
-        
-              /// Camera Icon
-              Center(
-                child: Container(
-                  height: 90,
-                  width: 90,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: Color(0xFF004CFF),
-                      width: 1.5,
-                    ),
-                  ),
-                  child: Center(
-                    child: Image.asset(
-                      "asset/image/pic3.png", // your asset
-                      height: 30,
-                    ),
-                  ),
-                ),
-              ),
-        
-              const SizedBox(height: 30),
-        
-              /// Input Box
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Color(0xFF004CFF)),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Column(
-                  children: [
-        
-                    /// Email
-                    const TextField(
-                      decoration: InputDecoration(
-                        hintText: "Email",
-                        border: InputBorder.none,
-                      ),
-                    ),
-        
-                    const Divider(),
-        
-                    /// Password
-                    TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        hintText: "Password",
-                        border: InputBorder.none,
-                        suffixIcon: Icon(
-                          Icons.visibility_off,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ),
-        
-                    const Divider(),
-        
-                    /// Phone Number
-                    Row(
-                      children: [
-                        Image.network(
-                          "https://flagcdn.com/w40/gb.png",
-                          width: 30,
-                        ),
-                        const SizedBox(width: 8),
-                        const Icon(Icons.keyboard_arrow_down),
-                        const SizedBox(width: 8),
-                        Container(
-                          height: 25,
-                          width: 1,
-                          color: Colors.grey,
-                        ),
-                        const SizedBox(width: 10),
-                        const Expanded(
-                          child: TextField(
-                            keyboardType: TextInputType.phone,
-                            decoration: InputDecoration(
-                              hintText: "Your number",
-                              border: InputBorder.none,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-        
-              const SizedBox(height: 30),
-        
-              /// Done Button
-              SizedBox(
-                width: double.infinity,
-                height: 55,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF004CFF),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                  ),
-                  onPressed: () {},
-                  child: const Text(
-                    "Done",
-                    style: TextStyle(
-                      fontFamily: 'NunitoSans',
-                      fontSize: 22,
-                      fontWeight: FontWeight.w300,
-                      color: Color(0xFFF3F3F3),
-                    ),
-                  ),
-                ),
-              ),
-        
-              const SizedBox(height: 20),
-        
-              /// Cancel
-              const Center(
-                child: Text(
-                  "Cancel",
-                  style: TextStyle(
-                    fontFamily: 'NunitoSans',
-                    fontSize: 15,
-                    fontWeight: FontWeight.w300,
-                    color: Color(0xFF202020),
-                  ),
-                ),
-              ),
-            ],
-          ),
+      // this helps when keyboard opens
+      resizeToAvoidBottomInset: true,
+
+      body: SafeArea(
+        child: Stack(
+          children: [
+            topBackgroundShape(),   // background images
+            createAccountBody(),    // scrollable content
+          ],
         ),
       ),
     );
   }
 
+  // ================= BACKGROUND DESIGN =================
+  Widget topBackgroundShape() {
+    return Stack(
+      children: [
+        Positioned(
+          top: 0,
+          left: 0,
+          child: Image.asset(
+            "asset/image/pic4.png",
+          ),
+        ),
+        Positioned(
+          top: 30,
+          right: 0,
+          child: Image.asset(
+            "asset/image/pic5.png",
+          ),
+        ),
+      ],
+    );
+  }
+
+  // ================= MAIN CONTENT =================
+  Widget createAccountBody() {
+    return SingleChildScrollView(
+      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+      child: Padding(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 80),
+
+            Text(
+              "Create\nAccount",
+              style: TextStyle(
+                fontSize: 45,
+                fontFamily: "Raleway",
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+            SizedBox(height: 30),
+
+            Image.asset("asset/image/pic6.png"),
+
+            SizedBox(height: 25),
+
+            inputField("Email"),
+
+            SizedBox(height: 15),
+
+            passwordField(),
+
+            SizedBox(height: 15),
+
+            phoneInputField(),
+
+            SizedBox(height: 65),
+
+            doneButton(),
+
+            SizedBox(height: 15),
+
+            Center(
+              child: Text(
+                "Cancel",
+                style: TextStyle(color: Color(0xFF202020),fontSize: 15),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // ================= EMAIL FIELD =================
+  Widget inputField(String hint) {
+    return TextField(
+      decoration: InputDecoration(
+        hintText: hint,
+        filled: true,
+        fillColor: Colors.grey.shade100,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(59.29),
+          borderSide: BorderSide.none,
+        ),
+      ),
+    );
+  }
+
+  // ================= PASSWORD FIELD =================
+  Widget passwordField() {
+    return TextField(
+      obscureText: _isPasswordHidden,
+      decoration: InputDecoration(
+        hintText: "Password",
+        suffixIcon: IconButton(
+          icon: Icon(
+            _isPasswordHidden
+                ? Icons.visibility_off
+                : Icons.visibility,
+          ),
+          onPressed: () {
+            setState(() {
+              _isPasswordHidden = !_isPasswordHidden;
+            });
+          },
+        ),
+        filled: true,
+        fillColor: Colors.grey.shade100,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(59.29),
+          borderSide: BorderSide.none,
+        ),
+      ),
+    );
+  }
+
+  // ================= PHONE FIELD =================
+  Widget phoneInputField() {
+    return TextField(
+      keyboardType: TextInputType.phone,
+      decoration: InputDecoration(
+        prefixIcon: Row(
+          mainAxisSize: MainAxisSize.min,
+          children:[
+            SizedBox(width: 12),
+            Text("🇬🇧", style: TextStyle(fontSize: 18)),
+            SizedBox(width: 6),
+            Icon(Icons.keyboard_arrow_down),
+            SizedBox(width: 8),
+          ],
+        ),
+        hintText: "Your number",
+        filled: true,
+        fillColor: Colors.grey.shade100,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(59.29),
+          borderSide: BorderSide.none,
+        ),
+      ),
+    );
+  }
+
+  // ================= DONE BUTTON =================
+  Widget doneButton() {
+    return SizedBox(
+      width: double.infinity,
+      height: 61,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Color(0XFF004CFF),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+        onPressed: () {
+        },
+        child: Text(
+          "Done",
+          style: TextStyle(
+            fontSize: 22,
+            color: Color(0xFFF3F3F3),
+          ),
+        ),
+      ),
+    );
+  }
 }

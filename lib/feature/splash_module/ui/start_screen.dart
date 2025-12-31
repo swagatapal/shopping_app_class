@@ -99,19 +99,27 @@ class _StartScreenState extends State<StartScreen> {
                   ),
                 ),
                 SizedBox(width: 8),
-                Container(
+                SizedBox(
                   height: 30,
                   width: 30,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF004CFF),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Center(
-                    child: Icon(Icons.arrow_forward,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/loginpage");
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:Color(0xFF004CFF),
+                      padding: EdgeInsets.zero,
+                      shape: CircleBorder(),
+                      elevation: 0,
+                    ),
+                    child:Icon(
+                      Icons.arrow_forward,
                       size: 16,
-                      color: Color(0xFFFFFFFF),),
+                      color: Colors.white,
+                    ),
                   ),
                 ),
+
               ],
             ),
           ],
