@@ -16,17 +16,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-
       // this helps when keyboard opens
       resizeToAvoidBottomInset: true,
-
-      body: SafeArea(
-        child: Stack(
-          children: [
-            topBackgroundShape(),   // background images
-            createAccountBody(),    // scrollable content
-          ],
-        ),
+      body: Stack(
+        children: [
+          topBackgroundShape(),   // background images
+          createAccountBody(),    // scrollable content
+        ],
       ),
     );
   }
@@ -96,9 +92,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(height: 15),
 
             Center(
-              child: Text(
-                "Cancel",
-                style: TextStyle(color: Color(0xFF202020),fontSize: 15),
+              child: InkWell(
+                onTap: (){
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  "Cancel",
+                  style: TextStyle(color: Color(0xFF202020),fontSize: 15),
+                ),
               ),
             ),
           ],

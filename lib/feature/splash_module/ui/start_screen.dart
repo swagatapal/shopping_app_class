@@ -104,7 +104,7 @@ class _StartScreenState extends State<StartScreen> {
                   width: 30,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, "/loginpage");
+                      Navigator.pushNamed(context, "/LoginPage");
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor:Color(0xFF004CFF),

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class passwordScreen extends StatefulWidget {
-  const passwordScreen({super.key});
+class PasswordScreen extends StatefulWidget {
+  const PasswordScreen({super.key});
 
   @override
-  State<passwordScreen> createState() => _passwordScreenState();
+  State<PasswordScreen> createState() => _PasswordScreenState();
 }
 
-class _passwordScreenState extends State<passwordScreen> {
+class _PasswordScreenState extends State<PasswordScreen> {
 
   final TextEditingController _controller = TextEditingController();
   String password = "";
@@ -26,12 +26,10 @@ class _passwordScreenState extends State<passwordScreen> {
   Widget passwordBody() {
     return Stack(
       children: [
-
         /// 🔹 Blue background circle
         Positioned(
           child: Image.asset("asset/image/pic7.png")
         ),
-
         /// 🔹 Light blue background
         Positioned(
           child: Image.asset("asset/image/pic8.png")
@@ -125,7 +123,7 @@ class _passwordScreenState extends State<passwordScreen> {
                 },
                 decoration: const InputDecoration(
                   border: InputBorder.none,
-                  counterText: "",
+
                 ),
               ),
             ),
