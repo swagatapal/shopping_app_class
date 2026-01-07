@@ -34,6 +34,7 @@ class _HelloCardState extends State<HelloCard> {
 
         Center(
           child: Container(
+            height: MediaQuery.of(context).size.height*0.75,
             width: MediaQuery.of(context).size.width * 0.85,
             decoration: BoxDecoration(
               color: Colors.white,

@@ -13,7 +13,7 @@ import '../constants/app_font_size.dart';
 
 
 class RouteGenerator {
-  static const kSplash = "/StartScreen";
+  static const kSplash = "/";
   static const kSignUpScreen = "/SignUpScreen";
   static const kLoginPage = "/LoginPage";
   static const kPasswordScreen = "/PasswordScreen";

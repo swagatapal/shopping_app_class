@@ -8,9 +8,9 @@ class PasswordScreen extends StatefulWidget {
 }
 
 class _PasswordScreenState extends State<PasswordScreen> {
-
   final TextEditingController _controller = TextEditingController();
   String password = "";
+  FocusNode _focusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +27,10 @@ class _PasswordScreenState extends State<PasswordScreen> {
     return Stack(
       children: [
         /// 🔹 Blue background circle
-        Positioned(
-          child: Image.asset("asset/image/pic7.png")
-        ),
+        Image.asset("asset/image/pic7.png"),
+
         /// 🔹 Light blue background
-        Positioned(
-          child: Image.asset("asset/image/pic8.png")
-        ),
+        Image.asset("asset/image/pic8.png"),
 
         /// 🔹 Main content
         Column(
@@ -70,30 +67,64 @@ class _PasswordScreenState extends State<PasswordScreen> {
 
             Text(
               "Type your password",
-              style: TextStyle(color: Color(0xFF000000),fontSize: 19,fontWeight: FontWeight.w300),
+              style: TextStyle(
+                  color: Color(0xFF000000),
+                  fontSize: 19,
+                  fontWeight: FontWeight.w300),
             ),
 
             SizedBox(height: 15),
 
             /// 🔹 Password dots
+
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                8, (index) => Container(
-                  margin: EdgeInsets.symmetric(horizontal: 6),
-                  height: 12,
-                  width: 12,
-                  decoration: BoxDecoration(
-                    color: index < password.length
-                        ? Colors.red
-                        : Color(0xFFE5EBFC),
-                    shape: BoxShape.circle,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  6,
+                  (index) => InkWell(
+                    onTap: () {
+                      FocusScope.of(context).requestFocus(_focusNode);
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 6),
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        color: index < password.length
+                            ? Colors.red
+                            : const Color(0xFFE5EBFC),
+                        shape: BoxShape.circle,
+                      ),
+                      child: index < password.length
+                          ? const Icon(Icons.circle,
+                              size: 10, color: Colors.white)
+                          : null,
+                    ),
                   ),
                 ),
               ),
+
+
+            TextField(
+              controller: _controller,
+              focusNode: _focusNode,
+              autofocus: true,
+              keyboardType: TextInputType.number,
+              obscureText: true,
+              maxLength: 6,
+              onChanged: (value) {
+                setState(() {
+                  password = value;
+                });
+              },
+              decoration: const InputDecoration(
+                border: InputBorder.none,
+                counterText: "",
+              ),
+              style: const TextStyle(color: Colors.transparent),
+              cursorColor: Colors.transparent,
             ),
 
-            SizedBox(height: 25),
             InkWell(
               onTap: () {
                 Navigator.pushNamed(context, "/PasswordRecovery");
@@ -106,39 +137,16 @@ class _PasswordScreenState extends State<PasswordScreen> {
                 ),
               ),
             ),
-            /// Forgot password
-
             Spacer(),
 
-            /// 🔹 Invisible TextField (keyboard input)
-            SizedBox(
-              height: 1,
-              width: 1,
-              child: TextField(
-                controller: _controller,
-                autofocus: true,
-                obscureText: true,
-                maxLength: 8,
-                keyboardType: TextInputType.number,
-                onChanged: (value) {
-                  setState(() {
-                    password = value;
-                  });
-                },
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
-
-                ),
-              ),
-            ),
-            SizedBox(height: 20,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   "Not you?",
-                  style: TextStyle(color: Color(0xFF202020),
+                  style: TextStyle(
+                    color: Color(0xFF202020),
                     fontFamily: 'NunitoSans',
                     fontWeight: FontWeight.w300,
                     fontSize: 15,
@@ -153,20 +161,23 @@ class _PasswordScreenState extends State<PasswordScreen> {
                       Navigator.pushNamed(context, "/HelloCard");
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor:Color(0xFF004CFF),
+                      backgroundColor: Color(0xFF004CFF),
                       padding: EdgeInsets.zero,
                       shape: CircleBorder(),
                       elevation: 0,
                     ),
-                    child:Icon(
+                    child: Icon(
                       Icons.arrow_forward,
                       size: 16,
                       color: Colors.white,
                     ),
                   ),
                 ),
-
               ],
+            ),
+
+            SizedBox(
+              height: 20,
             ),
           ],
         ),

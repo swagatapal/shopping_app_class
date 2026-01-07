@@ -34,10 +34,10 @@ class _LoginPageState extends State<LoginPage> {
           Align(
               alignment: Alignment.centerRight,
               child: Image.asset("asset/image/pic9.png")),
-          Spacer(),
-          Align(
-              alignment: Alignment.centerRight,
-              child: Image.asset("asset/image/pic10.png")),
+          // Spacer(),
+          // Align(
+          //     alignment: Alignment.centerRight,
+          //     child: Image.asset("asset/image/pic10.png")),
         ],
       ),
     );
@@ -49,15 +49,18 @@ class _LoginPageState extends State<LoginPage> {
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(height: 400,),
-            Text(
-              "Login",
-              style: TextStyle(
-                  fontSize: 52,
-                  fontFamily: "Raleway",
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF202020)),
+            Center(
+              child: Text(
+                "Login",
+                style: TextStyle(
+                    fontSize: 52,
+                    fontFamily: "Raleway",
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF202020)),
+              ),
             ),
             SizedBox(height: 8),
             Text(

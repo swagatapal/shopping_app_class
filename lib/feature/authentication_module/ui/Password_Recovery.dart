@@ -160,7 +160,7 @@ class _PasswordRecoveryState extends State<PasswordRecovery> {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 70),
+        margin: const EdgeInsets.symmetric(horizontal: 90),
         padding: const EdgeInsets.symmetric(vertical: 14),
         decoration: BoxDecoration(
           color: isSelected
@@ -214,3 +214,6 @@ class _PasswordRecoveryState extends State<PasswordRecovery> {
     );
   }
 }
+
+
+
