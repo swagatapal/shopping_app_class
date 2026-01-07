@@ -76,9 +76,26 @@ flutter:
   fonts:
      - family: Raleway
        fonts:
+         - asset: asset/fonts/Raleway-Black.ttf
+         - asset: asset/fonts/Raleway-BlackItalic.ttf
+         - asset: asset/fonts/Raleway-Bold.ttf
+         - asset: asset/fonts/Raleway-BoldItalic.ttf
+         - asset: asset/fonts/Raleway-ExtraBold.ttf
+         - asset: asset/fonts/Raleway-ExtraBoldItalic.ttf
+         - asset: asset/fonts/Raleway-ExtraLight.ttf
+         - asset: asset/fonts/Raleway-ExtraLightItalic.ttf
+         - asset: asset/fonts/Raleway-Italic.ttf
          - asset: asset/fonts/Raleway-Italic-VariableFont_wght.ttf
+         - asset: asset/fonts/Raleway-Light.ttf
+         - asset: asset/fonts/Raleway-LightItalic.ttf
+         - asset: asset/fonts/Raleway-Medium.ttf
+         - asset: asset/fonts/Raleway-MediumItalic.ttf
+         - asset: asset/fonts/Raleway-Regular.ttf
+         - asset: asset/fonts/Raleway-SemiBold.ttf
+         - asset: asset/fonts/Raleway-SemiBoldItalic.ttf
+         - asset: asset/fonts/Raleway-Thin.ttf
+         - asset: asset/fonts/Raleway-ThinItalic.ttf
          - asset: asset/fonts/Raleway-VariableFont_wght.ttf
-
      - family: NunitoSans
        fonts:
          - asset: asset/fonts/NunitoSans-Italic-VariableFont_YTLC,opsz,wdth,wght.ttf

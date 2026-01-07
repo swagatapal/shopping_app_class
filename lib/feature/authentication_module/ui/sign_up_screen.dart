@@ -190,6 +190,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
         ),
         onPressed: () {
+          Navigator.pushNamed(context,  "/HelloCard");
         },
         child: Text(
           "Done",

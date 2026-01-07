@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/feature/authentication_module/ui/NewPasswordScreen.dart';
+import 'package:shopping_app/feature/authentication_module/ui/Password_Recovery.dart';
+import 'package:shopping_app/feature/authentication_module/ui/Password_Recovery_Code.dart';
 import 'package:shopping_app/feature/authentication_module/ui/Password_Screen.dart';
 import 'package:shopping_app/feature/authentication_module/ui/login_page.dart';
+import 'package:shopping_app/feature/splash_module/ui/Hello_card.dart';
+import 'package:shopping_app/feature/splash_module/ui/Profile.dart';
 import 'package:shopping_app/feature/splash_module/ui/start_screen.dart';
 import '../../feature/authentication_module/ui/sign_up_screen.dart';
 import '../constants/app_colors.dart';
@@ -12,6 +17,11 @@ class RouteGenerator {
   static const kSignUpScreen = "/SignUpScreen";
   static const kLoginPage = "/LoginPage";
   static const kPasswordScreen = "/PasswordScreen";
+  static const kPasswordRecovery = "/PasswordRecovery";
+  static const kHelloCard = "/HelloCard";
+  static const kPasswordRecoveryCode = "/PasswordRecoveryCode";
+  static const kNewPasswordScreen = "/NewPasswordScreen";
+  static const kProfile = "/Profile";
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -24,6 +34,20 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const LoginPage());
       case kPasswordScreen:
         return MaterialPageRoute(builder: (_) => const PasswordScreen());
+      case kPasswordRecovery :
+        return MaterialPageRoute(builder: (_) => const PasswordRecovery());
+      case kHelloCard :
+        return MaterialPageRoute(builder: (_) => const HelloCard());
+      case kPasswordRecoveryCode :
+        return MaterialPageRoute(builder: (_) => const PasswordRecoveryCode());
+      case kNewPasswordScreen:
+        return MaterialPageRoute(builder: (_) => const NewPasswordScreen());
+      case kProfile:
+        return MaterialPageRoute(builder: (_) => const Profile());
+
+
+
+
 
 
       default:

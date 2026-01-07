@@ -94,15 +94,19 @@ class _PasswordScreenState extends State<PasswordScreen> {
             ),
 
             SizedBox(height: 25),
-
-            /// Forgot password
-            Text(
-              "Forgot your password?",
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 13,
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, "/PasswordRecovery");
+              },
+              child: const Text(
+                "Forgot your password?",
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.grey,
+                ),
               ),
             ),
+            /// Forgot password
 
             Spacer(),
 
@@ -126,6 +130,43 @@ class _PasswordScreenState extends State<PasswordScreen> {
 
                 ),
               ),
+            ),
+            SizedBox(height: 20,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  "Not you?",
+                  style: TextStyle(color: Color(0xFF202020),
+                    fontFamily: 'NunitoSans',
+                    fontWeight: FontWeight.w300,
+                    fontSize: 15,
+                  ),
+                ),
+                SizedBox(width: 8),
+                SizedBox(
+                  height: 30,
+                  width: 30,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/HelloCard");
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:Color(0xFF004CFF),
+                      padding: EdgeInsets.zero,
+                      shape: CircleBorder(),
+                      elevation: 0,
+                    ),
+                    child:Icon(
+                      Icons.arrow_forward,
+                      size: 16,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+
+              ],
             ),
           ],
         ),
