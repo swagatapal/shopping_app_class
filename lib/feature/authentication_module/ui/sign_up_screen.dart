@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:country_picker/country_picker.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -9,47 +10,43 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
 
-  // controls password visibility
   bool _isPasswordHidden = true;
+
+  Country _selectedCountry = Country.parse('GB'); // default 🇬🇧
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // this helps when keyboard opens
       resizeToAvoidBottomInset: true,
       body: Stack(
         children: [
-          topBackgroundShape(),   // background images
-          createAccountBody(),    // scrollable content
+          topBackgroundShape(),
+          createAccountBody(),
         ],
       ),
     );
   }
 
-  // ================= BACKGROUND DESIGN =================
+  // ================= BACKGROUND DESIGN (UNCHANGED) =================
   Widget topBackgroundShape() {
     return Stack(
       children: [
         Positioned(
           top: 0,
           left: 0,
-          child: Image.asset(
-            "asset/image/pic4.png",
-          ),
+          child: Image.asset("asset/image/pic4.png"),
         ),
         Positioned(
           top: 30,
           right: 0,
-          child: Image.asset(
-            "asset/image/pic5.png",
-          ),
+          child: Image.asset("asset/image/pic5.png"),
         ),
       ],
     );
   }
 
-  // ================= MAIN CONTENT =================
+  // ================= MAIN CONTENT (UNCHANGED) =================
   Widget createAccountBody() {
     return SingleChildScrollView(
       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -83,7 +80,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
             SizedBox(height: 15),
 
-            phoneInputField(),
+            phoneInputField(), // 👈 ONLY THIS IS MODIFIED
 
             SizedBox(height: 65),
 
@@ -93,12 +90,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
             Center(
               child: InkWell(
-                onTap: (){
+                onTap: () {
                   Navigator.pop(context);
                 },
                 child: Text(
                   "Cancel",
-                  style: TextStyle(color: Color(0xFF202020),fontSize: 15),
+                  style: TextStyle(color: Color(0xFF202020), fontSize: 15),
                 ),
               ),
             ),
@@ -131,9 +128,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         hintText: "Password",
         suffixIcon: IconButton(
           icon: Icon(
-            _isPasswordHidden
-                ? Icons.visibility_off
-                : Icons.visibility,
+            _isPasswordHidden ? Icons.visibility_off : Icons.visibility,
           ),
           onPressed: () {
             setState(() {
@@ -151,20 +146,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  // ================= PHONE FIELD =================
+  // ================= PHONE FIELD (FLAG PICKER ADDED) =================
   Widget phoneInputField() {
     return TextField(
       keyboardType: TextInputType.phone,
       decoration: InputDecoration(
-        prefixIcon: Row(
-          mainAxisSize: MainAxisSize.min,
-          children:[
-            SizedBox(width: 12),
-            Text("🇬🇧", style: TextStyle(fontSize: 18)),
-            SizedBox(width: 6),
-            Icon(Icons.keyboard_arrow_down),
-            SizedBox(width: 8),
-          ],
+        prefixIcon: InkWell(
+          onTap: () {
+            showCountryPicker(
+              context: context,
+              showPhoneCode: true,
+              onSelect: (Country country) {
+                setState(() {
+                  _selectedCountry = country;
+                });
+              },
+            );
+          },
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(width: 12),
+              Text(
+                _selectedCountry.flagEmoji,
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(width: 6),
+              Icon(Icons.keyboard_arrow_down),
+              SizedBox(width: 8),
+            ],
+          ),
         ),
         hintText: "Your number",
         filled: true,
@@ -190,7 +201,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
         ),
         onPressed: () {
-          Navigator.pushNamed(context,  "/HelloCard");
+          Navigator.pushNamed(context, "/HelloCard");
         },
         child: Text(
           "Done",

@@ -4,8 +4,10 @@ import 'package:shopping_app/feature/authentication_module/ui/Password_Recovery.
 import 'package:shopping_app/feature/authentication_module/ui/Password_Recovery_Code.dart';
 import 'package:shopping_app/feature/authentication_module/ui/Password_Screen.dart';
 import 'package:shopping_app/feature/authentication_module/ui/login_page.dart';
+import 'package:shopping_app/feature/splash_module/ui/Flash_Sale_Fullprofile.dart';
 import 'package:shopping_app/feature/splash_module/ui/Hello_card.dart';
 import 'package:shopping_app/feature/splash_module/ui/Profile.dart';
+import 'package:shopping_app/feature/splash_module/ui/Shop.dart';
 import 'package:shopping_app/feature/splash_module/ui/start_screen.dart';
 import '../../feature/authentication_module/ui/sign_up_screen.dart';
 import '../constants/app_colors.dart';
@@ -22,6 +24,8 @@ class RouteGenerator {
   static const kPasswordRecoveryCode = "/PasswordRecoveryCode";
   static const kNewPasswordScreen = "/NewPasswordScreen";
   static const kProfile = "/Profile";
+  static const kShop = "/Shop";
+  static const kFlashSaleFullprofile = "/FlashSaleFullprofile";
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -44,6 +48,12 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const NewPasswordScreen());
       case kProfile:
         return MaterialPageRoute(builder: (_) => const Profile());
+      case kShop:
+        return MaterialPageRoute(builder: (_) => const Shop());
+      case kFlashSaleFullprofile:
+        return MaterialPageRoute(builder: (_) => const FlashSaleFullprofile());
+
+
 
 
 
