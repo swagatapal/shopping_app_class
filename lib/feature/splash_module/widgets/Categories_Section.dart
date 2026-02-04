@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CategoriesSection extends StatelessWidget {
-  const CategoriesSection({super.key});
-
+  Function() onTap;
+   CategoriesSection({super.key,required this.onTap});
   @override
   Widget build(BuildContext context) {
     final categories = [
@@ -82,9 +82,7 @@ class CategoriesSection extends StatelessWidget {
                 style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
               ),
               GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, "/Shop");
-                },
+                onTap:onTap,
                 child: Row(
                   children: const [
                     Text(

@@ -276,9 +276,7 @@ class _FlashSaleFullprofileState extends State<FlashSaleFullprofile> {
               right: 8,
               child: GestureDetector(
                 onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text("Live Clicked")),
-                  );
+                  Navigator.pushNamed(context, "/Live");
                 },
                 child: Container(
                   padding:

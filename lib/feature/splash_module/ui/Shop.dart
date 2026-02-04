@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shopping_app/feature/splash_module/widgets/Categories_Section.dart';
-import 'package:shopping_app/feature/splash_module/widgets/Flash_Sale.dart';
+import 'package:shopping_app/feature/splash_module/widgets/Flash_Sale_Section.dart';
 import 'package:shopping_app/feature/splash_module/widgets/Just_for_you.dart';
 import 'package:shopping_app/feature/splash_module/widgets/MostPopular_Section.dart';
 import 'package:shopping_app/feature/splash_module/widgets/New_items_Section.dart';
@@ -132,7 +132,12 @@ class _ShopState extends State<Shop> {
               const SizedBox(height: 20),
 
               /// ⬇️ BELOW THIS YOU WILL ADD YOUR OWN WIDGETS
-              CategoriesSection(),
+              CategoriesSection(
+                onTap: ()
+                {
+                  Navigator.pushNamed(context, "/CategoriesFilter");
+                },
+              ),
               TopProductsSection(),
               NewItemsSection(),
               FlashSaleSection(),

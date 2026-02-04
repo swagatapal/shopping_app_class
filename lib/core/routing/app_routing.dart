@@ -4,10 +4,13 @@ import 'package:shopping_app/feature/authentication_module/ui/Password_Recovery.
 import 'package:shopping_app/feature/authentication_module/ui/Password_Recovery_Code.dart';
 import 'package:shopping_app/feature/authentication_module/ui/Password_Screen.dart';
 import 'package:shopping_app/feature/authentication_module/ui/login_page.dart';
+import 'package:shopping_app/feature/splash_module/ui/CategoriesFilter.dart';
 import 'package:shopping_app/feature/splash_module/ui/Flash_Sale_Fullprofile.dart';
 import 'package:shopping_app/feature/splash_module/ui/Hello_card.dart';
 import 'package:shopping_app/feature/splash_module/ui/Profile.dart';
 import 'package:shopping_app/feature/splash_module/ui/Shop.dart';
+import 'package:shopping_app/feature/splash_module/ui/Story_Product_Style.dart';
+import 'package:shopping_app/feature/splash_module/ui/live.dart';
 import 'package:shopping_app/feature/splash_module/ui/start_screen.dart';
 import '../../feature/authentication_module/ui/sign_up_screen.dart';
 import '../constants/app_colors.dart';
@@ -26,6 +29,9 @@ class RouteGenerator {
   static const kProfile = "/Profile";
   static const kShop = "/Shop";
   static const kFlashSaleFullprofile = "/FlashSaleFullprofile";
+  static const kLive = "/Live";
+  static const kStoryProductStyle = "/StoryProductStyle";
+  static const kCategoriesFilter = "/CategoriesFilter";
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -52,6 +58,13 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const Shop());
       case kFlashSaleFullprofile:
         return MaterialPageRoute(builder: (_) => const FlashSaleFullprofile());
+      case kLive:
+        return MaterialPageRoute(builder: (_) => const Live());
+      case kStoryProductStyle:
+        return MaterialPageRoute(builder: (_) => const StoryProductStyle());
+      case kCategoriesFilter:
+        return MaterialPageRoute(builder: (_) => const CategoriesFilter());
+
 
 
 

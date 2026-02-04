@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'Categories_Section.dart';
-import 'Flash_Sale.dart';
+import 'Flash_Sale_Section.dart';
 import 'Just_for_you.dart';
 import 'MostPopular_Section.dart';
 import 'My_Order_Section.dart';
@@ -24,14 +24,18 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
-          children: const [
+          children:  [
             TopHeader(),
             RecentlyViewedSection(),
             MyOrdersSection(),
             StoriesSection(),
             NewItemsSection(),
             MostPopularSection(),
-            CategoriesSection(),
+            CategoriesSection(
+              onTap: (){
+               Navigator.pushNamed(context, "/Shop");
+              },
+            ),
             FlashSaleSection(),
             TopProductsSection(),
             JustForYouSection(),
